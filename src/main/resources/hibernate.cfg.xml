@@ -7,18 +7,18 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/worksplit</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">tbbtgot</property>
+        <property name="hibernate.connection.password">Tbbtgot_73</property>
         <property name="hibernate.connection.pool_size">1</property>
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
-         <mapping class="com.worksplit.tables.User" />
+         <!--<mapping class="com.worksplit.tables.User" />-->
          <mapping class="com.worksplit.tables.Relationship" />
-         <mapping class="com.worksplit.tables.Tasks"/>
+        <mapping class="com.worksplit.userconfig.Role"/>
+        <mapping class="com.worksplit.userconfig.User"/>
+        <mapping class="com.worksplit.userconfig.Permission"/>
          <mapping class="com.worksplit.tables.GroupConfig"/>
-        <mapping class="com.worksplit.auth.Role"/>
-        <mapping class="com.worksplit.auth.Users"/>
 
 
     </session-factory>

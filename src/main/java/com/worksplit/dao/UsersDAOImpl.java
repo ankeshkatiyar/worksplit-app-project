@@ -2,22 +2,26 @@ package com.worksplit.dao;
 
 import java.util.List;
 
+import com.worksplit.userconfig.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.worksplit.dao.interfaces.DatabasePlugger;
 import com.worksplit.dao.interfaces.UsersDAO;
-import com.worksplit.tables.User;
+import com.worksplit.userconfig.User;
 
 @Repository
 public class UsersDAOImpl implements UsersDAO{
 	private final static String TABLE_NAME = "User";
 
 	@Autowired
+	UserRepository userRepository;
+	@Autowired
 	DatabasePlugger databasePlugger;
 	@Override
 	public User createUserDAO(User user) {
-		return (User) databasePlugger.saveValues(user);
+		//databasePlugger.saveValues(user.)
+		return userRepository.save(user);
 	}
 
 	@Override

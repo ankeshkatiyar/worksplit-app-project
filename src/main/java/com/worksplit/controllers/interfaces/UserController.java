@@ -2,17 +2,23 @@ package com.worksplit.controllers.interfaces;
 
 
 import com.worksplit.Constants;
+import com.worksplit.dto.UserDTO;
 import com.worksplit.models.ErrorResponse;
 import com.worksplit.models.UserModel;
-import com.worksplit.tables.User;
+import com.worksplit.userconfig.User;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = Constants.PATH_USERS)
+@Api(value="User Creation " , description = "Manage User Creation")
 public interface UserController {
 
     /**
@@ -35,7 +41,7 @@ public interface UserController {
      *
      */
 
-    @RequestMapping(value = "registration", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/registration", method = RequestMethod.POST, produces = "application/json")
     @ApiOperation(value = "Register User" , notes = "Register User ")
     @ApiResponses( value = {
             @ApiResponse(code = 200 , message = "User registered successfully"),
@@ -44,9 +50,10 @@ public interface UserController {
             @ApiResponse(code = 500 , message = "Internal error ,not able to perform this operation" , response = ErrorResponse.class),
 
     })
-    @ResponseBody ResponseEntity<UserModel> registerUser(@RequestBody User user) ;
+    @ResponseBody
+    ResponseEntity<UserDTO> registerUser(@RequestBody @Valid User user) ;
 
-    @RequestMapping(value = "login", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/login", method = RequestMethod.GET, produces = "application/json")
     @ApiOperation(value = "Login User" , notes = "Login User")
     @ApiResponses( value = {
             @ApiResponse(code = 200 , message = "User Logged in successfully"),
@@ -56,7 +63,9 @@ public interface UserController {
             @ApiResponse(code = 500 , message = "Internal error ,not able to perform this operation" , response = ErrorResponse.class),
 
     })
-    @ResponseBody ResponseEntity<UserModel> loginUser(@RequestBody User user);
+    @PreAuthorize("hasAnyAuthority('USER','ADMIN')")
+    @ResponseBody
+    ResponseEntity<UserModel> loginUser(@RequestBody User user);
 
 
 

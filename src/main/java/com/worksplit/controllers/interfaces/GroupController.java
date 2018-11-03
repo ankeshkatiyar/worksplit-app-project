@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -33,6 +34,7 @@ public interface GroupController {
 
     @RequestMapping(path = "/creategroups", method = RequestMethod.POST , produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Create Groups" , notes = "Create Groups")
+    @PreAuthorize("hasAnyAuthority('role_user','role_admin')")
     @ApiResponses( value = {
             @ApiResponse(code = 200 , message = "Group created successfully"),
             @ApiResponse(code = 401 , message = "User is unauthorized to access this method" ,response = ErrorResponse.class),

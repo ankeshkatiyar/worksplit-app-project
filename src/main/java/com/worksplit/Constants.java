@@ -7,7 +7,7 @@ import java.util.List;
 public final class Constants {
 
     public final static String PATH_GROUPS = "/v1/groups";
-    public final static String PATH_USERS = "v1/users";
+    public final static String PATH_USERS = "/v1/users";
     public final static List<String> MANDATORY_FIELD_LIST_GROUPS = new ArrayList<String>(
             Arrays.asList(
 

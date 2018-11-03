@@ -11,6 +11,7 @@ import com.worksplit.exceptions.DatabaseInsertException;
 import java.util.List;
 
 import javax.annotation.PreDestroy;
+import javax.transaction.Transactional;
 
 import com.worksplit.models.UserModel;
 
@@ -32,6 +33,7 @@ public class DatabasePluggerImpl<T> implements DatabasePlugger {
 	}
 
 	@Override
+	@Transactional
 	public Object saveValues(Object object) {
 
 		try {
@@ -86,6 +88,7 @@ public class DatabasePluggerImpl<T> implements DatabasePlugger {
 	}
 
 	@Override
+	@Transactional
 	public Object saveOrUpdateMultipleValues(List<?> objects) {
 		try {
 			for(Object singleObject : objects) {

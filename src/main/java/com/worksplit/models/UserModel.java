@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.worksplit.tables.User;
+import com.worksplit.userconfig.User;
 import com.worksplit.utils.StatusCodes;
 
 

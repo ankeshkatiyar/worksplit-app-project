@@ -21,7 +21,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 
 @SpringBootApplication
 @EnableSwagger2
-@EnableJpaRepositories("com.worksplit.auth")
+@EnableWebMvc
 public class WorksplitProjectApplication implements WebMvcConfigurer {
 
 	public static SessionFactory factory;

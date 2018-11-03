@@ -3,7 +3,7 @@ import java.util.List;
 
 import com.worksplit.tables.GroupConfig;
 import com.worksplit.tables.GroupMembersTable;
-import com.worksplit.tables.User;
+import com.worksplit.userconfig.User;
 
 
 public interface GroupMembers {

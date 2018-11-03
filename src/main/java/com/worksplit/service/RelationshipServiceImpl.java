@@ -19,7 +19,7 @@ public class RelationshipServiceImpl implements RelationshipService {
 
 	@Autowired
 	RelationshipDAOImpl relationshipActivitiesDao;
-	
+
 	@Autowired
 	Relationship relationshipTable;
 
@@ -36,8 +36,8 @@ public class RelationshipServiceImpl implements RelationshipService {
 				user = relationshipActivitiesDao.getUser("mob", relationship.getEmailOrPhone());
 			}
 			if (user != null && !user.isEmpty()) {
-				relationship.setUserTwoId(user.get(0).getUserId());
-				relationshipTable.setUserTwoId(user.get(0).getUserId());
+				//relationship.setUserTwoId(user.get(0).getUserId());
+				//relationshipTable.setUserTwoId(user.get(0).getUserId());
 				relationshipTable.setStatus(PENDING);
 				relationshipTable.setActionUserId(relationship.getUserOneId());
 				if (!relationshipActivitiesDao.inviteFriendsDao(relationshipTable)) {
@@ -63,7 +63,7 @@ public class RelationshipServiceImpl implements RelationshipService {
 			user = relationshipActivitiesDao.getUser("mob", emailOrPhone);
 		}
 
-		friends = relationshipActivitiesDao.getFriendList(user.get(0).getUserId());
+		//friends = relationshipActivitiesDao.getFriendList(user.get(0).getUserId());
 		return friends;
 	}
 

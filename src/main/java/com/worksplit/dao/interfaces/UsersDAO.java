@@ -1,6 +1,6 @@
 package com.worksplit.dao.interfaces;
 
-import com.worksplit.tables.User;
+import com.worksplit.userconfig.User;
 
 import java.util.List;
 
